@@ -15,7 +15,6 @@ namespace PruebaArandaApi.Service
     {
         private readonly AppSettings _appSettings;
         private readonly PruebaArandaContext _context;
-        private IdentityUserService _identityUserService;
         public InformationUserService(IOptions<AppSettings> appSettings, PruebaArandaContext context)
         {
             _appSettings = appSettings.Value;
@@ -36,7 +35,7 @@ namespace PruebaArandaApi.Service
                     {
                         IdentityUserId = newIdentityUserGuid,
                         Name = informationUserView.FirstName,
-                        Password = informationUserView.Password,
+                        Password = new LoginUtils().Encrypt(informationUserView.Password),
                         IsActive = true,
                         IsTempPassword = true,
                     };
