@@ -38,7 +38,7 @@ namespace PruebaArandaApi.Service
                         Name = informationUserView.FirstName,
                         Password = informationUserView.Password,
                         IsActive = true,
-                        IsTempPassword = true
+                        IsTempPassword = true,
                     };
                     _context.IdentityUser.Add(newIdentityUser);
                     await _context.SaveChangesAsync();
@@ -53,7 +53,8 @@ namespace PruebaArandaApi.Service
                         Address = informationUserView.Address,
                         Phone = informationUserView.Phone,
                         Email = informationUserView.Email,
-                        Age = informationUserView.Age
+                        Age = informationUserView.Age,
+                        RolsId = informationUserView.RolsId
                     };
                     _context.InformationUser.Add(newInformationUser);
                     await _context.SaveChangesAsync();
