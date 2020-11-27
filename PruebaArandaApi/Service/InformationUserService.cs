@@ -169,10 +169,15 @@ namespace PruebaArandaApi.Service
                 {
                     result = 1;
 
-                    await _identityUserService.RemoveIdentityUser(informationUser.IdentityUserId);
-
                     _context.InformationUser.Remove(informationUser);
                     await _context.SaveChangesAsync();
+
+                    IdentityUser identityUser = await _context.IdentityUser.Where(x => x.IdentityUserId.Equals(informationUser.IdentityUserId)).FirstOrDefaultAsync();
+                    if (identityUser != null)
+                    {
+                        _context.IdentityUser.Remove(identityUser);
+                        await _context.SaveChangesAsync();
+                    }
 
                     return result;
                 }
@@ -195,7 +200,8 @@ namespace PruebaArandaApi.Service
                 Address = informationUser.Address,
                 Phone = informationUser.Phone,
                 Email = informationUser.Email,
-                Age = informationUser.Age
+                Age = informationUser.Age,
+                RolsId = informationUser.RolsId
             };
             return informationUserView;
         }
