@@ -89,7 +89,7 @@ namespace PruebaAranda.DataModel.Model
 
                 entity.Property(e => e.LastName).HasColumnName("lastName");
 
-                entity.Property(e => e.Address).HasColumnName("address");
+                entity.Property(e => e.Address).HasColumnName("addres");
 
                 entity.Property(e => e.Phone).HasColumnName("phone");
                 

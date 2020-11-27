@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -137,14 +135,13 @@ namespace PruebaArandaApi.Controllers
         /// <summary>
         /// Obtener los usuarios por nombre o rol
         /// </summary>
-        /// <param name="identityUserID">ID del usuario</param>
         /// <returns></returns>
-        [HttpGet("GetInfoUserByNameOrRolsId/{name}/{rolsid}")]
+        [HttpGet("GetInfoUserByNameOrRolsId")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(EventMessage), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(EventMessage), StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<IActionResult> GetInfoUserByNameOrRolsId([FromRoute] string name,[FromRoute] Guid? rolsId)
+        public async Task<IActionResult> GetInfoUserByNameOrRolsId(string name, Guid? rolsId)
         {
             try
             {

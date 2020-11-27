@@ -131,7 +131,18 @@ namespace PruebaArandaApi.Service
             try
             {
                 List<InformationUserView> informationUserViews = new List<InformationUserView>();
-                var tempList = await _context.InformationUser.Where(x => (x.FirstName.Contains(name) || x.LastName.Contains(name)) || x.RolsId.Equals(rolsId)).ToListAsync();
+                List<InformationUser> tempList;
+                
+                if (name == null && rolsId == null) 
+                {
+                    tempList = await _context.InformationUser.ToListAsync();
+                }
+                else 
+                {
+                    tempList = await _context.InformationUser.Where(x => (x.FirstName.Contains(name) || x.LastName.Contains(name)) || x.RolsId.Equals(rolsId)).ToListAsync();
+                }
+                
+                
                 if (tempList.Count > 0)
                 {
                     foreach (InformationUser item in tempList)
