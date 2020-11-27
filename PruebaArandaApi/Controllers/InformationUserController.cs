@@ -170,11 +170,11 @@ namespace PruebaArandaApi.Controllers
         /// </summary>
         /// <param name="informationUserId">Id usuario</param>
         /// <returns></returns>
-        [HttpPost("RemoveInformationUser")]
+        [HttpPost("RemoveInformationUser/{informationUserId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(EventMessage), StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<IActionResult> RemoveIdentityUser([FromBody] Guid informationUserId)
+        public async Task<IActionResult> RemoveIdentityUser([FromRoute] Guid informationUserId)
         {
             try
             {
