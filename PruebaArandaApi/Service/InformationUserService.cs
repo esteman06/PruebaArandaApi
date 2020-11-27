@@ -29,7 +29,7 @@ namespace PruebaArandaApi.Service
                 if (informationUser == null)
                 {
                     result = 1;
-
+                    //Encriptar pass
                     Guid newIdentityUserGuid = Guid.NewGuid();
                     IdentityUser newIdentityUser = new IdentityUser
                     {
